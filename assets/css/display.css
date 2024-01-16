@@ -1,0 +1,42 @@
+@font-face {
+    font-family: golanta;
+    src: url(../fonts/SF\ Ironsides.ttf);
+}
+
+*{
+    margin: 0;
+    padding: 0;
+    font-family: golanta;
+    color: black;
+    font-size: 25px;
+}
+
+body{
+    background:url('../img/plage.gif') no-repeat;
+}
+
+.search-bar {
+    position: relative;
+  }
+  
+  .input {
+    width: 150px;
+    padding: 10px 0px 10px 40px;
+    border-radius: 9999px;
+    border: solid 1px #333;
+    transition: all .2s ease-in-out;
+    outline: none;
+    opacity: 0.8;
+  }
+  
+  .search-bar svg {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translate(0, -50%);
+  }
+  
+  .input:focus {
+    opacity: 1;
+    width: 250px;
+  }
