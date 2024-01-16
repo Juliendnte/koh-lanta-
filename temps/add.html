@@ -1,0 +1,45 @@
+{{define "add"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add</title>
+    <link rel="stylesheet" href="../static/css/add.css">
+</head>
+<body>
+    <form method="post" action="add/treatment">
+            <input type="radio" name="sexe" value="Homme" checked />
+            <label for="sexe">Homme</label>
+            <input type="radio" name="sexe" value="Femme"  />
+            <label for="sexe">Femme</label>
+        
+            <input type="radio" name="shirt" value="1" checked />
+            <label for="shirt">Shirt1</label>
+            <input type="radio" name="shirt" value="2"  />
+            <label for="shirt">Shirt2</label>
+            <input type="radio" name="shirt" value="3"  />
+            <label for="shirt">Shirt3</label>
+            <input type="radio" name="shirt" value="4"  />
+            <label for="shirt">Shirt4</label>
+       
+            <input type="radio" name="pant" value="1" checked />
+            <label for="pant">Pant1</label>
+            <input type="radio" name="pant" value="2"  />
+            <label for="pant">Pant2</label>
+            <input type="radio" name="pant" value="3"  />
+            <label for="pant">Pant3</label>
+            <input type="radio" name="pant" value="4"  />
+            <label for="pant">Pant4</label>
+        
+            <div class="input-container">
+            <input type="text" name="name" id="input" required>
+            <label for="naùe" class="label">Saisissez votre nom</label>
+            <div class="underline"></div>
+          </div>
+
+          <button type="submit" class="button">Envoyer </button>     
+    </form>
+</body>
+</html>
+{{end}}
