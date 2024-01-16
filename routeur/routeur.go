@@ -1,8 +1,8 @@
 package routeur
 
 import (
-	ctrl "koh-lanta/controller"
 	"fmt"
+	ctrl "koh-lanta/controller"
 	"net/http"
 	"os"
 )
@@ -12,6 +12,14 @@ func InitServe() {
 	http.HandleFunc("Route actuel, fonction activé")
 	Lorsque on se situe sur une route la fonction associé va s'activé */
 	http.HandleFunc("/index", ctrl.Index)
+	http.HandleFunc("/add", ctrl.Add)
+	http.HandleFunc("/add/treatment", ctrl.InitAdd)
+	http.HandleFunc("/display", ctrl.Display)
+	http.HandleFunc("/update", ctrl.Update)
+	http.HandleFunc("/update/treatment", ctrl.InitUpdate)
+	http.HandleFunc("/suppr", ctrl.Suppr)
+	http.HandleFunc("/search", ctrl.Search)
+
 
 	//renvoie sur la page d'erreur si la route n'est pas trouvée
 	http.HandleFunc("/", ctrl.HandleError)
