@@ -1,14 +1,15 @@
 @font-face {
-    font-family: golanta;
-    src: url(../fonts/SF\ Ironsides.ttf);
+  font-family: golanta;
+  src: url(../fonts/SF\ Ironsides.ttf);
 }
 
 *{
-    margin: 0;
-    padding: 0;
-    font-family: golanta;
-    color: black;
-    font-size: 25px;
+  margin: 0;
+  padding: 0;
+  font-family: golanta;
+  color: black;
+  font-size: 35px;
+  text-decoration: none;
 }
 
 body{

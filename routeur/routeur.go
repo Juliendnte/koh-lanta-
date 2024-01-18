@@ -19,6 +19,8 @@ func InitServe() {
 	http.HandleFunc("/update/treatment", ctrl.InitUpdate)
 	http.HandleFunc("/suppr", ctrl.Suppr)
 	http.HandleFunc("/search", ctrl.Search)
+	http.HandleFunc("/gender", ctrl.Gender)
+
 
 
 	//renvoie sur la page d'erreur si la route n'est pas trouvée

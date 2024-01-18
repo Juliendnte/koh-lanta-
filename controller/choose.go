@@ -23,7 +23,6 @@ func InitAdd(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("Erreur atoi", err.Error())
 	}
-	InitStruct.Person.Genders = r.FormValue("sexe")
 	InitStruct.Person.Id = InitStruct.GenerateID()
 	InitStruct.Person.Name = r.FormValue("name")
 	InitStruct.Person.Pants, err = strconv.Atoi(r.FormValue("pants"))
@@ -39,4 +38,9 @@ func InitAdd(w http.ResponseWriter, r *http.Request) {
 	InitStruct.EditJSON(InitStruct.Persons)
 
 	http.Redirect(w, r, "/index", http.StatusMovedPermanently)
+}
+
+func Gender(w http.ResponseWriter, r *http.Request){
+	InitTemps.Temp.ExecuteTemplate(w, "gender", nil)
+
 }
