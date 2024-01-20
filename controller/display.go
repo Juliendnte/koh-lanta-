@@ -9,6 +9,10 @@ import (
 )
 
 func Display(w http.ResponseWriter, r *http.Request) {
+	InitStruct.Persons,err = InitStruct.ReadJSON()
+	if err != nil {
+		fmt.Println("Erreur read", err.Error())
+	}
 	InitTemps.Temp.ExecuteTemplate(w, "display", InitStruct.Persons)
 }
 
@@ -24,7 +28,7 @@ func Search(w http.ResponseWriter, r *http.Request) {
 		os.Exit(1)
 	}
 
-	queryName := r.URL.Query().Get("name") //Récupére le titre donné dans le Query string
+	queryName := r.URL.Query().Get("text") //Récupére le titre donné dans le Query string
 	var lstSearch []InitStruct.Personnage
 
 	for _, c := range InitStruct.Persons {
@@ -39,5 +43,5 @@ func Search(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//execute le template Search
-	InitTemps.Temp.ExecuteTemplate(w, "Search", InitStruct.Persons)
+	InitTemps.Temp.ExecuteTemplate(w, "Search", lstSearch)
 }

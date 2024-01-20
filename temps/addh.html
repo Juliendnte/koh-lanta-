@@ -1,10 +1,10 @@
-{{define "update"}}
+{{define "addh"}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update</title>
+    <title>AddH</title>
     <link rel="stylesheet" href="../static/css/add.css">
 </head>
 <body>
@@ -24,8 +24,8 @@
             <button id="prevdown"><ion-icon name="chevron-back-outline"></ion-icon></button>
         </div>
         <div class="name">
-            <form id="form" class="input-container" action="/update/treatment" method="post">
-                <input type="text" value="{{.Name}}" name="name" id="input" required>
+            <form id="form" class="input-container" action="/add/treatment" method="post">
+                <input type="text" name="name" id="input" required>
                 <label for="name" class="label">Saisissez votre nom</label>
                 <div class="underline"></div>
             </form>
@@ -64,7 +64,7 @@
         console.log("url('../img/"+p+n+".png')")
 
         photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
-        frm.action = '/update/treatment?image='+p+n;
+        frm.action = '/add/treatment?image='+p+n;
         afficherMasque();
     }
 
@@ -75,7 +75,7 @@
         }
         console.log("url('img/"+p+n+".png')")
         photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
-        frm.action = '/update/treatment?image='+p+n;
+        frm.action = '/add/treatment?image='+p+n;
 
         afficherMasque();
     }
@@ -88,7 +88,7 @@
         console.log("url('../img/"+p+n+".png')")
 
         photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
-        frm.action = '/update/treatment?image='+p+n;
+        frm.action = '/add/treatment?image='+p+n;
 
         afficherMasque2();
     }
@@ -101,7 +101,7 @@
         console.log("url('assets/img/"+p+n+".png')")
 
         photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
-        frm.action = '/update/treatment?image='+p+n;
+        frm.action = '/add/treatment?image='+p+n;
 
         afficherMasque2();
         

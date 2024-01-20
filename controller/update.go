@@ -10,6 +10,7 @@ import (
 )
 
 var Id int
+var Genderr string
 
 func Update(w http.ResponseWriter, r *http.Request) {
 	queryID, errId := strconv.Atoi(r.URL.Query().Get("id"))
@@ -22,10 +23,11 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	for _, i := range InitStruct.Persons {
 		if i.Id == queryID {
 			InitStruct.Person = i
+			Genderr = i.Genders
 			break
 		}
 	}
-
+	fmt.Println(InitStruct.Person,"up")
 	Id = queryID
 
 	InitTemps.Temp.ExecuteTemplate(w, "update", InitStruct.Person)
@@ -38,15 +40,18 @@ func InitUpdate(w http.ResponseWriter, r *http.Request) {
 	}
 
 	//Prend le blog à l'id donné
+
 	for _, i := range InitStruct.Persons {
 		if i.Id == Id {
-			InitStruct.Persons[Id-1].Genders = r.FormValue("sexe")
+			InitStruct.Persons[Id-1].Genders = Genderr
 			InitStruct.Persons[Id-1].Name = r.FormValue("name")
-			InitStruct.Persons[Id-1].Pants, err = strconv.Atoi(r.FormValue("pants"))
-			if err != nil {
-				fmt.Println("Erreur atoi", err.Error())
+			if InitStruct.Person.Genders == "h" {
+				InitStruct.Person.Pants, err = strconv.Atoi(string(r.URL.Query().Get("image")[1]))
+				if err != nil {
+					fmt.Println("Erreur atoi", err.Error())
+				}
 			}
-			InitStruct.Persons[Id-1].Shirt, err = strconv.Atoi(r.FormValue("shirt"))
+			InitStruct.Person.Shirt, err = strconv.Atoi(string(r.URL.Query().Get("image")[0]))
 			if err != nil {
 				fmt.Println("Erreur atoi", err.Error())
 			}
@@ -66,6 +71,7 @@ func Suppr(w http.ResponseWriter, r *http.Request) {
 	}
 
 	queryID, errId := strconv.Atoi(r.URL.Query().Get("id")) //Récupére l'Id donné dans le Query string et le met en int
+	fmt.Println(queryID, " bam")
 	if errId != nil {
 		fmt.Println("Error ID ", errId.Error())
 		os.Exit(1)
@@ -73,6 +79,7 @@ func Suppr(w http.ResponseWriter, r *http.Request) {
 
 	queryID-- //Pour que l'index commence à 0
 	for _, c := range InitStruct.Persons {
+		fmt.Println(c.Id, queryID, " s")
 		if c.Id == queryID {
 			InitStruct.Persons = append(InitStruct.Persons[:queryID], InitStruct.Persons[queryID+1:]...) //Supprime de la liste des blogs
 			queryID++

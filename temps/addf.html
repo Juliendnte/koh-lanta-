@@ -1,0 +1,94 @@
+{{define "addf"}}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddF</title>
+    <link rel="stylesheet" href="../static/css/add.css">
+</head>
+<body>
+
+    <div id="carrousel" class="carrousel">
+        <div id="container" class="container">
+            <div id="photo">
+                
+            </div>
+        </div>
+        
+    </div>
+        <div class="controlle">
+            <button id="nextup"><ion-icon name="chevron-back-outline"></ion-icon></button>
+            <button id="prevup"><ion-icon name="chevron-back-outline"></ion-icon></button>
+        </div>
+        <div class="name">
+            <form id="form" class="input-container" action="/add/treatment" method="post">
+                <input type="text" name="name" id="input" required>
+                <label for="name" class="label">Saisissez votre nom</label>
+                <div class="underline"></div>
+            </form>
+        </div>
+        
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    <script>
+        document.body.onload = function(){
+    nbr=4;
+    p=1;
+    frm = document.getElementById('form')
+    container=document.getElementById("container");
+    g=document.getElementById("prevup");
+    d=document.getElementById("nextup");
+    photo=document.getElementById("photo");
+    console.log("url('img/f"+p+".png')")
+    frm.action = '/add/treatment?image='+p;
+    photo.style.backgroundImage="url('../static/img/f"+p+".png')";
+    photo.style.backgroundRepeat = "no-repeat";   
+    photo.style.width="170px"
+    photo.style.height="300px"
+
+    afficherMasque();
+
+
+    g.onclick=function(){
+        if (p<nbr){
+            p++;
+            container.style.transition="all 0.2s ease";
+        }
+        console.log("url('../img/f"+p+".png')")
+
+        photo.style.backgroundImage="url('../static/img/f"+p+".png')";
+        frm.action = '/add/treatment?image='+p;
+        afficherMasque();
+    }
+
+    d.onclick=function(){
+        if (p>1){
+            p--;
+            container.style.transition="all 0.2s ease";
+        }
+        console.log("url('img/f"+p+".png')")
+        photo.style.backgroundImage="url('../static/img/f"+p+".png')";
+        frm.action = '/add/treatment?image='+p;
+
+        afficherMasque();
+    }
+
+    function afficherMasque(){
+        if (p==nbr)
+            g.style.visibility="hidden";
+        else
+            g.style.visibility="visible";
+        if (p==1)
+            d.style.visibility="hidden";
+        else
+            d.style.visibility="visible";
+        
+    }
+}
+    </script>
+    
+</body>
+</html>
+{{end}}

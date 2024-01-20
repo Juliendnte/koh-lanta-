@@ -12,8 +12,35 @@
   text-decoration: none;
 }
 
-body{
-    background:url('../img/plage.gif') no-repeat;
+body {
+  background:url('../img/plage.gif') no-repeat;
+  height:100vh;
+  width:100vw;
+  background-position: center;
+  background-size: cover;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: inset 0 0 1em black;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  display: flex;
+  justify-content: flex-end;
+  width: 100vw;
+  padding: 30px;
+}
+
+.cards{
+  margin: 20px;
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
 }
 
 .search-bar {
@@ -41,3 +68,34 @@ body{
     opacity: 1;
     width: 250px;
   }
+
+.icon{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 10px;
+  height: 400px;
+}
+
+.trash{
+  
+}
+
+.modify{
+  
+}
+  ion-icon{
+    font-size: 64px;
+  }
+
+a:hover{
+  transform: scale(1.1);
+}
+
+.container{
+  width: 100vw;
+  flex-wrap: wrap;
+  display: flex;
+  overflow: scroll;
+  height: 80vh;
+}

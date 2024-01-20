@@ -1,78 +1,168 @@
-@font-face {
-  font-family: golanta;
-  src: url(../fonts/SF\ Ironsides.ttf);
-}
-
-*{
-  margin: 0;
-  padding: 0;
-  font-family: golanta;
-  color: black;
-  font-size: 35px;
-  text-decoration: none;
-}
-
-body {
-    background:url('../img/plage.gif') no-repeat;
-    height:100vh;
-    width:100vw;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
 .input-container {
-    position: relative;
-    margin: 50px auto;
-    width: 200px;
-  }
+  position: relative;
+  margin: 50px auto;
+  width: 200px;
+}
+
+.input-container input[type="text"] {
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #7b7373;
+  padding: 5px 0;
+  background-color: transparent;
+  outline: none;
+}
+
+.input-container .label {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: #7b7373;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.input-container input[type="text"]:focus ~ .label,
+.input-container input[type="text"]:valid ~ .label {
+  top: -20px;
+  font-size: 16px;
+  color: black;
+}
+
+.input-container .underline {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  width: 100%;
+  background-color: black;
+  transform: scaleX(0);
+  transition: all 0.3s ease;
+}
+
+.input-container input[type="text"]:focus ~ .underline,
+.input-container input[type="text"]:valid ~ .underline {
+  transform: scaleX(1);
+}
+
+
+.name{
+display: flex;
+justify-content: flex-end;
   
-  .input-container input[type="text"] {
-    font-size: 20px;
-    width: 100%;
-    border: none;
-    border-bottom: 2px solid #7b7373;
-    padding: 5px 0;
-    background-color: transparent;
-    outline: none;
-  }
-  
-  .input-container .label {
-    position: absolute;
-    top: 0;
-    left: 0;
-    color: #7b7373;
-    transition: all 0.3s ease;
-    pointer-events: none;
-  }
-  
-  .input-container input[type="text"]:focus ~ .label,
-  .input-container input[type="text"]:valid ~ .label {
-    top: -20px;
-    font-size: 16px;
-    color: black;
-  }
-  
-  .input-container .underline {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    height: 2px;
-    width: 100%;
-    background-color: black;
-    transform: scaleX(0);
-    transition: all 0.3s ease;
-  }
-  
-  .input-container input[type="text"]:focus ~ .underline,
-  .input-container input[type="text"]:valid ~ .underline {
-    transform: scaleX(1);
-  }
-  
-  form{
-    background-color: rgb(0,0,0,0.5);
-    border-radius: 10px;
-    padding: 10px;
-  }
+padding: 10%;
+}
+
+body{
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 100vh;
+  background-image: url(../img/plage.gif);
+  background-size: cover;
+}
+
+.carrousel{
+  width: 40%;
+  height: 400px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container{
+  width: 40%;
+  height: 400px;
+}
+
+button{
+  position: absolute;
+  width: 70px;
+  cursor: pointer;
+  z-index: 20;
+  transition: all 0.3s ease;
+  padding: 10px;
+  background-color: transparent;
+  border: 0;
+  outline: none;
+}
+
+#nextdown{
+  left: 0;
+  bottom: 0;
+  opacity: 0.4;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+
+}
+
+#nextup{
+  left: 0;
+  opacity: 0.4;
+  transform: rotate(0deg);
+  transition: all 0.3s ease;
+
+}
+
+#prevup{
+  right: 0;
+  opacity: 0.4;
+  transform: rotate(180deg);
+  transition: all 0.3s ease;
+}
+
+#prevdown{
+  bottom: 0;
+  right: 0;
+  opacity: 0.4;
+  transform: rotate(180deg);
+  transition: all 0.3s ease;
+
+}
+
+#nextup:hover{
+  transform:rotate(0deg) scale(1.1);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+#prevup:hover{
+  transform:rotate(180deg) scale(1.1);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+#nextdown:hover{
+  transform:rotate(0deg) scale(1.1);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+#prevdown:hover{
+  transform:rotate(180deg) scale(1.1);
+  opacity: 0.8;
+  transition: all 0.3s ease;
+}
+
+.photo{
+  margin:0;
+  display: inline-block;
+  background-size: cover;
+}
+
+ion-icon{
+  font-size: 64px;
+}
+
+.controlle{
+  height: 30%;
+  position: absolute;
+  display: flex;
+  justify-content: space-evenly;
+  width: 40%;
+}
