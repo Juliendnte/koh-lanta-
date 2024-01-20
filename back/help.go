@@ -3,13 +3,14 @@ package back
 import (
 	"encoding/json"
 	"fmt"
+	"math/rand"
 	"os"
 	"strings"
 )
 
 // Fonction pour modifié le JSON
 func EditJSON(ModifiedArticle []Personnage) {
-	
+
 	modifiedJSON, errMarshal := json.Marshal(ModifiedArticle)
 	if errMarshal != nil {
 		fmt.Println("Error encodage ", errMarshal.Error())
@@ -49,17 +50,11 @@ func IdAlreadyExists(nb int) bool {
 
 // Fonction pour générer un Id disponible
 func GenerateID() int {
-	if !IdAlreadyExists(len(Persons) + 1) {
-		return len(Persons) + 1
-	} else {
-		t := LstIDSuppr[0]
-		if len(LstIDSuppr) > 1 {
-			LstIDSuppr = LstIDSuppr[1:]
-		} else {
-			LstIDSuppr = []int{}
-		}
-		return t
+	var Id int = rand.Intn(100)
+	if IdAlreadyExists(Id) {
+		return GenerateID()
 	}
+	return Id
 }
 
 // Fonction pour rechercher

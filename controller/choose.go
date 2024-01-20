@@ -18,8 +18,10 @@ func Add(w http.ResponseWriter, r *http.Request) {
 	InitStruct.Person.Genders = r.URL.Query().Get("gender")
 	if InitStruct.Person.Genders == "h" {
 		InitTemps.Temp.ExecuteTemplate(w, "addh", InitStruct.Person)
-	} else {
+	} else if InitStruct.Person.Genders == "f" {
 		InitTemps.Temp.ExecuteTemplate(w, "addf", InitStruct.Person)
+	} else {
+		fmt.Println("Erreur gender")
 	}
 }
 
@@ -30,22 +32,25 @@ func InitAdd(w http.ResponseWriter, r *http.Request) {
 	}
 	InitStruct.Person.Id = InitStruct.GenerateID()
 	InitStruct.Person.Name = r.FormValue("name")
-	fmt.Println("a",r.URL.Query().Get("image"))
-	if InitStruct.Person.Genders == "h" {
-		InitStruct.Person.Pants, err = strconv.Atoi(string(r.URL.Query().Get("image")[1]))
-		if err != nil {
-			fmt.Println("Erreur atoi", err.Error())
-		}
-		InitStruct.Person.Shirt, err = strconv.Atoi(string(r.URL.Query().Get("image")[0]))
-
-		if err != nil {
-			fmt.Println("Erreur atoi", err.Error())
-		}
-
-	} else {
-		InitStruct.Person.Shirt, err = strconv.Atoi(string(r.URL.Query().Get("image")))
-
+	InitStruct.Person.Clothes, err = strconv.Atoi(r.URL.Query().Get("image"))
+	if err != nil {
+		fmt.Println("Erreur atoi", err.Error())
 	}
+	// if InitStruct.Person.Genders == "h" {
+	// 	InitStruct.Person.Pants, err = strconv.Atoi(string(r.URL.Query().Get("image")[1]))
+	// 	if err != nil {
+	// 		fmt.Println("Erreur atoi", err.Error())
+	// 	}
+	// 	InitStruct.Person.Shirt, err = strconv.Atoi(string(r.URL.Query().Get("image")[0]))
+
+	// 	if err != nil {
+	// 		fmt.Println("Erreur atoi", err.Error())
+	// 	}
+
+	// } else {
+	// 	InitStruct.Person.Shirt, err = strconv.Atoi(string(r.URL.Query().Get("image")))
+
+	// }
 
 	InitStruct.Persons = append(InitStruct.Persons, InitStruct.Person)
 	InitStruct.EditJSON(InitStruct.Persons)

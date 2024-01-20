@@ -18,15 +18,21 @@
     </header>
     {{range .}}
     <div class="cards">
+        {{if eq .Genders "h"}}
         <div >
-            <img src="../static/img/{{.Shirt}}{{.Pants}}.png" alt="moi">
+            <img src="../static/img/{{.Clothes}}.png" alt="moi">
         </div>
+        {{else}}
+        <div >
+            <img src="../static/img/f{{.Clothes}}.png" alt="moi">
+        </div>
+        {{end}}
         <div>
             {{.Name}}
         </div>
         <div class="icon">
             <a href="/suppr?id={{.Id}}">
-                <ion-icon class="trash" name="trash-outline"></ion-icon>
+                <ion-icon class="trash"  name="trash-outline"></ion-icon>
             </a>
             <a href="/update?id={{.Id}}">
                 <ion-icon class="modify" name="construct"></ion-icon>
@@ -34,6 +40,7 @@
             
         </div>
     </div>
+    
     
     {{end}}
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

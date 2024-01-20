@@ -27,38 +27,42 @@ func Update(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
-	fmt.Println(InitStruct.Person,"up")
+	fmt.Println(InitStruct.Person, "up")
 	Id = queryID
 
-	InitTemps.Temp.ExecuteTemplate(w, "update", InitStruct.Person)
+	if InitStruct.Person.Genders == "h" {
+		InitTemps.Temp.ExecuteTemplate(w, "update", InitStruct.Person)
+	} else if InitStruct.Person.Genders == "f" {
+		InitTemps.Temp.ExecuteTemplate(w, "updatef", InitStruct.Person)
+
+	}
 }
 
 func InitUpdate(w http.ResponseWriter, r *http.Request) {
 	InitStruct.Persons, err = InitStruct.ReadJSON()
 	if err != nil {
-		fmt.Println("Erreur atoi", err.Error())
+		fmt.Println("Erreur read", err.Error())
 	}
 
 	//Prend le blog à l'id donné
-
+	var c int
+	fmt.Println("IN IN")
 	for _, i := range InitStruct.Persons {
+		fmt.Println("Update", i.Id, Id)
 		if i.Id == Id {
-			InitStruct.Persons[Id-1].Genders = Genderr
-			InitStruct.Persons[Id-1].Name = r.FormValue("name")
-			if InitStruct.Person.Genders == "h" {
-				InitStruct.Person.Pants, err = strconv.Atoi(string(r.URL.Query().Get("image")[1]))
-				if err != nil {
-					fmt.Println("Erreur atoi", err.Error())
-				}
-			}
-			InitStruct.Person.Shirt, err = strconv.Atoi(string(r.URL.Query().Get("image")[0]))
+			InitStruct.Person.Id = i.Id
+			InitStruct.Person.Genders = Genderr
+			InitStruct.Person.Name = r.FormValue("name")
+			InitStruct.Person.Clothes, err = strconv.Atoi(r.URL.Query().Get("image"))
 			if err != nil {
 				fmt.Println("Erreur atoi", err.Error())
 			}
 			break
 		}
+		c++
 	}
-
+	fmt.Println( InitStruct.Person)
+	InitStruct.Persons[c] = InitStruct.Person
 	InitStruct.EditJSON(InitStruct.Persons)
 	http.Redirect(w, r, "/display", http.StatusMovedPermanently)
 }
@@ -71,19 +75,14 @@ func Suppr(w http.ResponseWriter, r *http.Request) {
 	}
 
 	queryID, errId := strconv.Atoi(r.URL.Query().Get("id")) //Récupére l'Id donné dans le Query string et le met en int
-	fmt.Println(queryID, " bam")
 	if errId != nil {
 		fmt.Println("Error ID ", errId.Error())
 		os.Exit(1)
 	}
 
-	queryID-- //Pour que l'index commence à 0
-	for _, c := range InitStruct.Persons {
-		fmt.Println(c.Id, queryID, " s")
+	for i, c := range InitStruct.Persons {
 		if c.Id == queryID {
-			InitStruct.Persons = append(InitStruct.Persons[:queryID], InitStruct.Persons[queryID+1:]...) //Supprime de la liste des blogs
-			queryID++
-			InitStruct.LstIDSuppr = append(InitStruct.LstIDSuppr, queryID)
+			InitStruct.Persons = append(InitStruct.Persons[:i], InitStruct.Persons[i+1:]...) //Supprime de la liste des blogs
 			break
 		}
 	}

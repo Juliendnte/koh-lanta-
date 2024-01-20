@@ -13,6 +13,7 @@ func Display(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("Erreur read", err.Error())
 	}
+	
 	InitTemps.Temp.ExecuteTemplate(w, "display", InitStruct.Persons)
 }
 
@@ -38,7 +39,7 @@ func Search(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if len(lstSearch) == 0 { //Oui je triche
-		none := InitStruct.Personnage{Name: "Nothing", Id: 0, Genders: "", Shirt: 0, Pants: 0}
+		none := InitStruct.Personnage{Name: "Nothing", Id: 0, Genders: "", Clothes: 0}
 		lstSearch = append(lstSearch, none)
 	}
 
