@@ -8,6 +8,7 @@ import (
 	"os"
 )
 
+//Execute le template qui affiche tous les personnages
 func Display(w http.ResponseWriter, r *http.Request) {
 	InitStruct.Persons,err = InitStruct.ReadJSON()
 	if err != nil {
@@ -17,6 +18,7 @@ func Display(w http.ResponseWriter, r *http.Request) {
 	InitTemps.Temp.ExecuteTemplate(w, "display", InitStruct.Persons)
 }
 
+//Execute le template error 404
 func HandleError(w http.ResponseWriter, r *http.Request) {
 	InitTemps.Temp.ExecuteTemplate(w, "error", nil)
 }
@@ -29,12 +31,12 @@ func Search(w http.ResponseWriter, r *http.Request) {
 		os.Exit(1)
 	}
 
-	queryName := r.URL.Query().Get("text") //Récupére le titre donné dans le Query string
+	queryName := r.URL.Query().Get("text") //Récupére le text donné dans le Query string
 	var lstSearch []InitStruct.Personnage
 
 	for _, c := range InitStruct.Persons {
 		if InitStruct.Search(c.Name, queryName) {
-			lstSearch = append(lstSearch, c) //Met tous les blogs résultant de la recherche
+			lstSearch = append(lstSearch, c) //Met tous les personnages résultant de la recherche
 		}
 	}
 

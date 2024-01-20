@@ -18,7 +18,11 @@
             </svg>
         </form>
     </header>
+   
     {{range .}}
+    {{if eq .Name "Nothing"}}
+        <p>Aucun résultat trouvé</p>
+    {{else}}
     <div class="cards">
         {{if eq .Genders "h"}}
         <div >
@@ -42,6 +46,7 @@
             
         </div>
     </div>
+    {{end}}
     
     
     {{end}}

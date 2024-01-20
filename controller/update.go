@@ -12,6 +12,7 @@ import (
 var Id int
 var Genderr string
 
+//Execute le template pour modifier un personnage choisie 
 func Update(w http.ResponseWriter, r *http.Request) {
 	queryID, errId := strconv.Atoi(r.URL.Query().Get("id"))
 	if errId != nil {
@@ -27,7 +28,6 @@ func Update(w http.ResponseWriter, r *http.Request) {
 			break
 		}
 	}
-	fmt.Println(InitStruct.Person, "up")
 	Id = queryID
 
 	if InitStruct.Person.Genders == "h" {
@@ -38,17 +38,16 @@ func Update(w http.ResponseWriter, r *http.Request) {
 	}
 }
 
+//Fonction pour modifier un personnage
 func InitUpdate(w http.ResponseWriter, r *http.Request) {
 	InitStruct.Persons, err = InitStruct.ReadJSON()
 	if err != nil {
 		fmt.Println("Erreur read", err.Error())
 	}
 
-	//Prend le blog à l'id donné
+	//Prend le personnage à l'id donné
 	var c int
-	fmt.Println("IN IN")
 	for _, i := range InitStruct.Persons {
-		fmt.Println("Update", i.Id, Id)
 		if i.Id == Id {
 			InitStruct.Person.Id = i.Id
 			InitStruct.Person.Genders = Genderr
@@ -61,12 +60,13 @@ func InitUpdate(w http.ResponseWriter, r *http.Request) {
 		}
 		c++
 	}
-	fmt.Println( InitStruct.Person)
+	
 	InitStruct.Persons[c] = InitStruct.Person
 	InitStruct.EditJSON(InitStruct.Persons)
 	http.Redirect(w, r, "/display", http.StatusMovedPermanently)
 }
 
+//Fonction pour supprimer un personnage
 func Suppr(w http.ResponseWriter, r *http.Request) {
 	InitStruct.Persons, err = InitStruct.ReadJSON() //Met le fichier JSON dans ma struct
 	if err != nil {
@@ -82,7 +82,7 @@ func Suppr(w http.ResponseWriter, r *http.Request) {
 
 	for i, c := range InitStruct.Persons {
 		if c.Id == queryID {
-			InitStruct.Persons = append(InitStruct.Persons[:i], InitStruct.Persons[i+1:]...) //Supprime de la liste des blogs
+			InitStruct.Persons = append(InitStruct.Persons[:i], InitStruct.Persons[i+1:]...) //Supprime de la liste des personnage
 			break
 		}
 	}
