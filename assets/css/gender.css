@@ -12,6 +12,19 @@
     text-decoration: none;
 }
 
+header{
+    padding: 10px;
+    position: absolute;
+}
+
+img{
+    width: 225px
+}
+
+img:hover{
+    transform: scale(1.09)
+}
+
 body {
     background:url('../img/plage.gif') no-repeat;
     height:100vh;
@@ -53,13 +66,10 @@ body {
     animation: myAnim 2s ease 0s 1 normal forwards;
 }
 
-.male:hover{
+a:hover{
     transform: scale(1.2)
 }
 
-.female:hover{
-    transform: scale(1.2)
-}
 
 .p{
     display: flex;

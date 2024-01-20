@@ -28,9 +28,11 @@ header{
   position: fixed;
   top: 0;
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
   width: 100vw;
   padding: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
 .cards{
@@ -38,9 +40,15 @@ header{
   background-color: rgba(0, 0, 0, 0.4);
   border-radius: 10px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   align-items: center;
   width: 40%;
+  padding: 20px;
+}
+
+.suppr{
+  background-color: red;
+  border-radius: 10px;
 }
 
 .search-bar {

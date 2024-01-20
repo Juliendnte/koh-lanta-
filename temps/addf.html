@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="../static/css/add.css">
 </head>
 <body>
-
     <div id="carrousel" class="carrousel">
         <div id="container" class="container">
-            <div id="photo">
+            <div class="photo" id="photo">
                 
             </div>
         </div>
@@ -41,12 +40,11 @@
     g=document.getElementById("prevup");
     d=document.getElementById("nextup");
     photo=document.getElementById("photo");
-    console.log("url('img/f"+p+".png')")
     frm.action = '/add/treatment?image='+p;
     photo.style.backgroundImage="url('../static/img/f"+p+".png')";
     photo.style.backgroundRepeat = "no-repeat";   
-    photo.style.width="170px"
-    photo.style.height="300px"
+    photo.style.width="150px"
+    photo.style.height="400px"
 
     afficherMasque();
 
@@ -56,8 +54,6 @@
             p++;
             container.style.transition="all 0.2s ease";
         }
-        console.log("url('../img/f"+p+".png')")
-
         photo.style.backgroundImage="url('../static/img/f"+p+".png')";
         frm.action = '/add/treatment?image='+p;
         afficherMasque();
@@ -68,7 +64,6 @@
             p--;
             container.style.transition="all 0.2s ease";
         }
-        console.log("url('img/f"+p+".png')")
         photo.style.backgroundImage="url('../static/img/f"+p+".png')";
         frm.action = '/add/treatment?image='+p;
 

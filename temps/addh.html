@@ -8,10 +8,9 @@
     <link rel="stylesheet" href="../static/css/add.css">
 </head>
 <body>
-
     <div id="carrousel" class="carrousel">
         <div id="container" class="container">
-            <div id="photo">
+            <div class="photo" id="photo">
                 
             </div>
         </div>
@@ -49,8 +48,8 @@
     console.log("url('img/"+p+n+".png')")
     photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
     frm.action = '/add/treatment?image='+p+n;
-    photo.style.width="100px"
-    photo.style.height="300px"
+    photo.style.width="130px"
+    photo.style.height="400px"
 
     afficherMasque();
     afficherMasque2();

@@ -151,6 +151,7 @@ button{
 
 .photo{
   margin:0;
+  background-size: cover;
   display: inline-block;
   background-size: cover;
 }
@@ -166,3 +167,4 @@ ion-icon{
   justify-content: space-evenly;
   width: 40%;
 }
+

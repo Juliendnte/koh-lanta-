@@ -9,6 +9,7 @@
 </head>
 <body>
     <header>
+        <a href="/index"><img src="../static/img/pdp.png" alt="pdp"></a>
         <form action="/search" class="search-bar" method="get">
             <input type="text" placeholder="Search" name="text" class="input">
             <svg fill="#000000" width="20px" height="20px" viewBox="0 0 1920 1920" xmlns="http://www.w3.org/2000/svg">
@@ -33,7 +34,7 @@
             </div>
             <div class="icon">
                 <a href="/suppr?id={{.Id}}">
-                    <ion-icon class="trash"  name="trash-outline"></ion-icon>
+                    <ion-icon class="suppr"  name="trash-outline"></ion-icon>
                 </a>
                 <a href="/update?id={{.Id}}">
                     <ion-icon class="modify" name="construct"></ion-icon>
@@ -44,7 +45,16 @@
         
         {{end}}
     </div>
-   
+    <script>
+        function afficherAlerte() {
+            alert("Voulez-vous vraiment supprimer cet article?");
+        }
+    
+        var liens = document.querySelectorAll(".suppr");
+        liens.forEach(function(lien) {
+            lien.addEventListener("click", afficherAlerte);
+        });
+    </script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

@@ -36,21 +36,6 @@ func InitAdd(w http.ResponseWriter, r *http.Request) {
 	if err != nil {
 		fmt.Println("Erreur atoi", err.Error())
 	}
-	// if InitStruct.Person.Genders == "h" {
-	// 	InitStruct.Person.Pants, err = strconv.Atoi(string(r.URL.Query().Get("image")[1]))
-	// 	if err != nil {
-	// 		fmt.Println("Erreur atoi", err.Error())
-	// 	}
-	// 	InitStruct.Person.Shirt, err = strconv.Atoi(string(r.URL.Query().Get("image")[0]))
-
-	// 	if err != nil {
-	// 		fmt.Println("Erreur atoi", err.Error())
-	// 	}
-
-	// } else {
-	// 	InitStruct.Person.Shirt, err = strconv.Atoi(string(r.URL.Query().Get("image")))
-
-	// }
 
 	InitStruct.Persons = append(InitStruct.Persons, InitStruct.Person)
 	InitStruct.EditJSON(InitStruct.Persons)
