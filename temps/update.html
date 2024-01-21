@@ -26,9 +26,16 @@
     </div>
     <div class="name">
         <form id="form" class="input-container" action="/update/treatment" method="post">
-            <input type="text" value="{{.Name}}" name="name" id="input" required>
-            <label for="name" class="label">Saisissez votre nom</label>
-            <div class="underline"></div>
+            <div class="inputContainer">
+                <input value="{{.Name}}" required="required" id="inputField" type="text">
+                <label class="usernameLabel" for="inputField">Nom</label>
+                <svg viewBox="0 0 448 512" class="userIcon"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg>
+            </div>
+            <div class="inputContainer">
+                <input value="{{.Age}}" required="required" id="inputField"  type="number">
+                <label class="usernameLabel" for="inputField">Age</label>
+                <svg viewBox="0 0 448 512" class="userIcon"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg>
+            </div>
         </form>
     </div>
 

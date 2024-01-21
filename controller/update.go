@@ -52,6 +52,10 @@ func InitUpdate(w http.ResponseWriter, r *http.Request) {
 			InitStruct.Person.Id = i.Id
 			InitStruct.Person.Genders = Genderr
 			InitStruct.Person.Name = r.FormValue("name")
+			InitStruct.Person.Age, err = strconv.Atoi(r.FormValue("age"))
+			if err != nil {
+				fmt.Println("Erreur atoi", err.Error())
+			}
 			InitStruct.Person.Clothes, err = strconv.Atoi(r.URL.Query().Get("image"))
 			if err != nil {
 				fmt.Println("Erreur atoi", err.Error())

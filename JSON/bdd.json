@@ -3,24 +3,28 @@
         "id": 33,
         "genders": "f",
         "clothes": 1,
-        "name": "Kheir"
+        "name": "Kheir",
+        "age":32
     },
     {
         "id": 2,
         "genders": "h",
         "clothes": 11,
-        "name": "Kantin"
+        "name": "Kantin",
+        "age":20
     },
     {
         "id": 91,
         "genders": "f",
         "clothes": 2,
-        "name": "Vito"
+        "name": "Vito",
+        "age":100
     },
     {
         "id": 39,
         "genders": "h",
         "clothes": 44,
-        "name": "Nathanael"
+        "name": "Nathanael",
+        "age":18
     }
 ]
