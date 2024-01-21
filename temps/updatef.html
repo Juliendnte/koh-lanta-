@@ -1,93 +1,96 @@
 {{define "updatef"}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UpdateF</title>
     <link rel="stylesheet" href="../static/css/add.css">
 </head>
+
 <body>
     <div id="carrousel" class="carrousel">
         <div id="container" class="container">
             <div style="background-image: url(../static/img/{{.Clothes}}.png);" id="photo">
-                
+
             </div>
         </div>
-        
+
     </div>
-        <div class="controlle">
-            <button id="nextup"><ion-icon name="chevron-back-outline"></ion-icon></button>
-            <button id="prevup"><ion-icon name="chevron-back-outline"></ion-icon></button>
-        </div>
-        <div class="name">
-            <form id="form" class="input-container" action="/update/treatment" method="post">
-                <input type="text"  value="{{.Name}}" name="name" id="input" required>
-                <label for="name" class="label">Saisissez votre nom</label>
-                <div class="underline"></div>
-            </form>
-        </div>
-        
+    <div class="controlle">
+        <button id="nextup"><ion-icon name="chevron-back-outline"></ion-icon></button>
+        <button id="prevup"><ion-icon name="chevron-back-outline"></ion-icon></button>
+    </div>
+    <div class="name">
+        <form id="form" class="input-container" action="/update/treatment" method="post">
+            <input type="text" value="{{.Name}}" name="name" id="input" required>
+            <label for="name" class="label">Saisissez votre nom</label>
+            <div class="underline"></div>
+        </form>
+    </div>
+
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-        document.body.onload = function(){
-            photo=document.getElementById("photo");
+        document.body.onload = function () {
+            photo = document.getElementById("photo");
             Img = photo.style.backgroundImage;
             Img = Img.match(/(\d+)\.png/)[1];
-            
-            nbr=4;
-            p=Img;
+
+            nbr = 4;
+            p = Img;
             frm = document.getElementById('form')
-            container=document.getElementById("container");
-            g=document.getElementById("prevup");
-            d=document.getElementById("nextup");
-            frm.action = '/update/treatment?image='+p;
-            photo.style.backgroundImage="url('../static/img/f"+p+".png')";
-            photo.style.backgroundRepeat = "no-repeat";   
-            photo.style.width="170px"
-            photo.style.height="300px"
+            container = document.getElementById("container");
+            g = document.getElementById("prevup");
+            d = document.getElementById("nextup");
+            frm.action = '/update/treatment?image=' + p;
+            photo.style.backgroundImage = "url('../static/img/f" + p + ".png')";
+            photo.style.backgroundRepeat = "no-repeat";
+            photo.style.width = "170px"
+            photo.style.height = "300px"
 
             afficherMasque();
 
 
-            g.onclick=function(){
-                if (p<nbr){
+            g.onclick = function () {
+                if (p < nbr) {
                     p++;
-                    container.style.transition="all 0.2s ease";
+                    container.style.transition = "all 0.2s ease";
                 }
 
-                photo.style.backgroundImage="url('../static/img/f"+p+".png')";
-                frm.action = '/update/treatment?image='+p;
+                photo.style.backgroundImage = "url('../static/img/f" + p + ".png')";
+                frm.action = '/update/treatment?image=' + p;
                 afficherMasque();
             }
 
-            d.onclick=function(){
-                if (p>1){
+            d.onclick = function () {
+                if (p > 1) {
                     p--;
-                    container.style.transition="all 0.2s ease";
+                    container.style.transition = "all 0.2s ease";
                 }
-                photo.style.backgroundImage="url('../static/img/f"+p+".png')";
-                frm.action = '/update/treatment?image='+p;
+                photo.style.backgroundImage = "url('../static/img/f" + p + ".png')";
+                frm.action = '/update/treatment?image=' + p;
 
                 afficherMasque();
             }
 
-            function afficherMasque(){
-                if (p==nbr)
-                    g.style.visibility="hidden";
+            function afficherMasque() {
+                if (p == nbr)
+                    g.style.visibility = "hidden";
                 else
-                    g.style.visibility="visible";
-                if (p==1)
-                    d.style.visibility="hidden";
+                    g.style.visibility = "visible";
+                if (p == 1)
+                    d.style.visibility = "hidden";
                 else
-                    d.style.visibility="visible";
-                
+                    d.style.visibility = "visible";
+
             }
         }
     </script>
-    
+
 </body>
+
 </html>
 {{end}}

@@ -1,135 +1,138 @@
 {{define "update"}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update</title>
     <link rel="stylesheet" href="../static/css/add.css">
 </head>
+
 <body>
     <div id="carrousel" class="carrousel">
         <div id="container" class="container">
             <div style="background-image: url(../static/img/{{.Clothes}}.png);" id="photo">
-                
+
             </div>
         </div>
-        
+
     </div>
-        <div class="controlle">
-            <button id="nextup"><ion-icon name="chevron-back-outline"></ion-icon></button>
-            <button id="prevup"><ion-icon name="chevron-back-outline"></ion-icon></button>
-            <button id="nextdown"><ion-icon name="chevron-back-outline"></ion-icon></button>
-            <button id="prevdown"><ion-icon name="chevron-back-outline"></ion-icon></button>
-        </div>
-        <div class="name">
-            <form id="form" class="input-container" action="/update/treatment" method="post">
-                <input type="text" value="{{.Name}}" name="name" id="input" required>
-                <label for="name" class="label">Saisissez votre nom</label>
-                <div class="underline"></div>
-            </form>
-        </div>
-        
+    <div class="controlle">
+        <button id="nextup"><ion-icon name="chevron-back-outline"></ion-icon></button>
+        <button id="prevup"><ion-icon name="chevron-back-outline"></ion-icon></button>
+        <button id="nextdown"><ion-icon name="chevron-back-outline"></ion-icon></button>
+        <button id="prevdown"><ion-icon name="chevron-back-outline"></ion-icon></button>
+    </div>
+    <div class="name">
+        <form id="form" class="input-container" action="/update/treatment" method="post">
+            <input type="text" value="{{.Name}}" name="name" id="input" required>
+            <label for="name" class="label">Saisissez votre nom</label>
+            <div class="underline"></div>
+        </form>
+    </div>
+
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
     <script>
-        document.body.onload = function(){
-            photo=document.getElementById("photo");
+        document.body.onload = function () {
+            photo = document.getElementById("photo");
             Img = photo.style.backgroundImage;
             Img = Img.match(/(\d+)\.png/)[1];
             console.log(Img)
-            nbr=4;
-            p=Math.floor(Img/10);
-            n=Img%10;
+            nbr = 4;
+            p = Math.floor(Img / 10);
+            n = Img % 10;
             frm = document.getElementById('form')
-            container=document.getElementById("container");
-            gup=document.getElementById("prevup");
-            dup=document.getElementById("nextup");
-            gdown=document.getElementById("prevdown");
-            ddown=document.getElementById("nextdown");
-            photo=document.getElementById("photo");
-            photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
-            frm.action = '/update/treatment?image='+p+n;
-            photo.style.width="100px"
-            photo.style.height="300px"
+            container = document.getElementById("container");
+            gup = document.getElementById("prevup");
+            dup = document.getElementById("nextup");
+            gdown = document.getElementById("prevdown");
+            ddown = document.getElementById("nextdown");
+            photo = document.getElementById("photo");
+            photo.style.backgroundImage = "url('../static/img/" + p + n + ".png')";
+            frm.action = '/update/treatment?image=' + p + n;
+            photo.style.width = "100px"
+            photo.style.height = "300px"
 
             afficherMasque();
             afficherMasque2();
 
 
-            gup.onclick=function(){
-                if (p<nbr){
+            gup.onclick = function () {
+                if (p < nbr) {
                     p++;
-                    container.style.transition="all 0.2s ease";
+                    container.style.transition = "all 0.2s ease";
                 }
 
-                photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
-                frm.action = '/update/treatment?image='+p+n;
+                photo.style.backgroundImage = "url('../static/img/" + p + n + ".png')";
+                frm.action = '/update/treatment?image=' + p + n;
                 afficherMasque();
             }
 
-            dup.onclick=function(){
-                if (p>1){
+            dup.onclick = function () {
+                if (p > 1) {
                     p--;
-                    container.style.transition="all 0.2s ease";
+                    container.style.transition = "all 0.2s ease";
                 }
-                photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
-                frm.action = '/update/treatment?image='+p+n;
+                photo.style.backgroundImage = "url('../static/img/" + p + n + ".png')";
+                frm.action = '/update/treatment?image=' + p + n;
 
                 afficherMasque();
             }
 
-            gdown.onclick=function(){
-                if (n<nbr){
+            gdown.onclick = function () {
+                if (n < nbr) {
                     n++;
-                    container.style.transition="all 0.2s ease";
+                    container.style.transition = "all 0.2s ease";
                 }
 
-                photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
-                frm.action = '/update/treatment?image='+p+n;
+                photo.style.backgroundImage = "url('../static/img/" + p + n + ".png')";
+                frm.action = '/update/treatment?image=' + p + n;
 
                 afficherMasque2();
             }
 
-            ddown.onclick=function(){
-                if (n>1){
+            ddown.onclick = function () {
+                if (n > 1) {
                     n--;
-                    container.style.transition="all 0.2s ease";
-                }  
+                    container.style.transition = "all 0.2s ease";
+                }
 
-                photo.style.backgroundImage="url('../static/img/"+p+n+".png')";
-                frm.action = '/update/treatment?image='+p+n;
+                photo.style.backgroundImage = "url('../static/img/" + p + n + ".png')";
+                frm.action = '/update/treatment?image=' + p + n;
 
                 afficherMasque2();
-                
+
             }
 
-            function afficherMasque(){
-                if (p==nbr)
-                    gup.style.visibility="hidden";
+            function afficherMasque() {
+                if (p == nbr)
+                    gup.style.visibility = "hidden";
                 else
-                    gup.style.visibility="visible";
-                if (p==1)
-                    dup.style.visibility="hidden";
+                    gup.style.visibility = "visible";
+                if (p == 1)
+                    dup.style.visibility = "hidden";
                 else
-                    dup.style.visibility="visible";
-                
+                    dup.style.visibility = "visible";
+
             }
 
-            function afficherMasque2(){
-                if (n==nbr)
-                    gdown.style.visibility="hidden";
+            function afficherMasque2() {
+                if (n == nbr)
+                    gdown.style.visibility = "hidden";
                 else
-                    gdown.style.visibility="visible";
-                if (n==1)
-                    ddown.style.visibility="hidden";
+                    gdown.style.visibility = "visible";
+                if (n == 1)
+                    ddown.style.visibility = "hidden";
                 else
-                    ddown.style.visibility="visible";
+                    ddown.style.visibility = "visible";
             }
         }
     </script>
-    
+
 </body>
+
 </html>
 {{end}}

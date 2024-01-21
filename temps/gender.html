@@ -1,12 +1,14 @@
 {{define "gender"}}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>gender</title>
     <link rel="stylesheet" href="../static/css/gender.css">
 </head>
+
 <body>
     <header>
         <a href="/index"><img src="../static/img/pdp.png" alt="pdp"></a>
@@ -14,14 +16,15 @@
     <div class="p">
         <p>Choissisez votre genre</p>
     </div>
-    
+
     <div class="container">
-        <a href="/add?gender=f" class="female"><ion-icon  name='female'></ion-icon></a>
-        <a href="/add?gender=h" class="male"><ion-icon  name='male'></ion-icon></a>
+        <a href="/add?gender=f" class="female"><ion-icon name='female'></ion-icon></a>
+        <a href="/add?gender=h" class="male"><ion-icon name='male'></ion-icon></a>
     </div>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 </body>
+
 </html>
 {{end}}
