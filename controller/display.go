@@ -41,7 +41,7 @@ func Search(w http.ResponseWriter, r *http.Request) {
 	}
 
 	if len(lstSearch) == 0 { //Oui je triche
-		none := InitStruct.Personnage{Name: "Nothing", Id: 0, Genders: "", Clothes: 0}
+		none := InitStruct.Personnage{Name: "Nothing", Id: 0, Genders: "", Clothes: 0, Age: 0}
 		lstSearch = append(lstSearch, none)
 	}
 

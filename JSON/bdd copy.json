@@ -1,26 +1,30 @@
 [
     {
-        "id": 33,
+        "id": 20,
         "genders": "f",
         "clothes": 1,
-        "name": "Kheir"
+        "name": "Kheir",
+        "age": 32
     },
     {
-        "id": 2,
+        "id": 78,
         "genders": "h",
         "clothes": 11,
-        "name": "Kantin"
+        "name": "Kantin",
+        "age": 20
     },
     {
-        "id": 91,
+        "id": 95,
         "genders": "f",
         "clothes": 2,
-        "name": "Vito"
+        "name": "Vito",
+        "age": 99
     },
     {
-        "id": 55,
+        "id": 70,
         "genders": "h",
         "clothes": 44,
-        "name": "Nathanael"
+        "name": "Nathanael",
+        "age": 18
     }
 ]

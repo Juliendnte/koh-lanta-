@@ -25,15 +25,17 @@
     <div class="name">
         <form id="form" class="input-container" action="/add/treatment" method="post">
             <div class="inputContainer">
-                <input required="required" id="inputField" placeholder="Saissisez votre nom" type="text">
-                <label class="usernameLabel" for="inputField">Nom</label>
+                <input name="name" required="required" id="inputField" placeholder="Saissisez votre nom" type="text">
+                <label class="usernameLabel" for="name">Nom</label>
                 <svg viewBox="0 0 448 512" class="userIcon"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg>
             </div>
             <div class="inputContainer">
-                <input required="required" id="inputField" placeholder="Saissisez votre age" type="number">
-                <label class="usernameLabel" for="inputField">Age</label>
+                <input name="age" required="required" id="inputField" placeholder="Saissisez votre age" type="number">
+                <label class="usernameLabel" for="age">Age</label>
                 <svg viewBox="0 0 448 512" class="userIcon"><path d="M224 256A128 128 0 1 0 224 0a128 128 0 1 0 0 256zm-45.7 48C79.8 304 0 383.8 0 482.3C0 498.7 13.3 512 29.7 512H418.3c16.4 0 29.7-13.3 29.7-29.7C448 383.8 368.2 304 269.7 304H178.3z"></path></svg>
             </div>
+            <button type="submit" role="button" class="button-name">Envoyer</button>
+
         </form>
     </div>
 
